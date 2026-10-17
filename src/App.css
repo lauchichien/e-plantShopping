@@ -1,147 +1,217 @@
-/* LandingPage.css */
+
+/* App.css */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* Main App Container */
+.app-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Landing Page */
 .landing-page {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f8f8f8;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    transition: opacity 0.5s ease;
 }
 
+.landing-page.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Background Image */
 .background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
-  background-size: 100% 100%;
-  background-position: center;
-  filter: brightness(0.8);
-}
-.content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
- top: 100px;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0,0,0,0.5);
-  gap: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.8);
 }
 
-.landing_content {
- margin-top: 430px;
-  margin-left: 100px;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  text-align: center;
-  /* background-color: red; */
-  width: 400px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+/* Landing Content Area */
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
 }
 
 .content p,
 .content h1 {
-  color: white;
+    color: white;
 }
 
 .content h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 48px;
 }
 
 .content p {
-  font-size: 25px;
+    font-size: 25px;
 }
 
+/* Landing Content */
+.landing_content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    max-width: 100%;
+    height: 400px;
+    margin: 0;
+    gap: 10px;
+    text-align: center;
+}
+
+/* Divider */
 .divider {
-  width: 50px;
-  height: 2px;
-  background-color: #4caf50;
-  margin: 10px 0;
+    width: 50px;
+    height: 2px;
+    margin: 10px 0;
+    background-color: #4caf50;
 }
 
+/* Get Started Button */
 .get-started-button {
-  padding: 15px 25px;
-  font-size: 23px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
+    margin-top: 40px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .get-started-button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
-/* ProductList.css */
+/* About Us */
+.aboutus_container {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+}
 
+/* Product List Container */
 .product-list-container {
-  position: absolute;
-  overflow-x: hidden;
-  top: 100vh;
-  /* Initially off-screen */
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Adjust background opacity as needed */
-  transition: top 0.5s ease;
-  /* Smooth transition for top property */
-  overflow-y: auto;
-  /* Enable vertical scrolling */
-  z-index: 2;
-  /* Ensure it's above landing page content */
-  backdrop-filter: blur(5px);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    transition: top 0.5s ease;
 }
 
 .product-list-container.visible {
-  top: 0;
+    top: 0;
 }
-/* LandingPage.css */
+
+/* Tablet */
 @media screen and (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-  }
+    .content {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
 
-  .landing_content {
-    margin-top: 100px; /* Adjust as needed */
-    margin-left: 0;
-    width: 80%; /* Adjust as needed */
-    text-align: center;
-  }
+    .landing_content {
+        width: 80%;
+        height: auto;
+        min-height: 300px;
+        margin: 0;
+    }
 
-  .aboutus_container {
-    margin-top: 20px; /* Adjust as needed */
-    width: 80%; /* Adjust as needed */
-  }
+    .content h1 {
+        font-size: 36px;
+    }
+
+    .content p {
+        font-size: 20px;
+    }
+
+    .get-started-button {
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    .aboutus_container {
+        width: 80%;
+        margin-top: 20px;
+    }
 }
 
+/* Mobile */
 @media screen and (max-width: 480px) {
-  .landing_content {
-    margin-top: 50px; /* Adjust as needed */
-    width: 90%; /* Adjust as needed */
-  }
+    .landing_content {
+        width: 90%;
+        min-height: 250px;
+    }
 
-  .aboutus_container {
-    width: 90%; /* Adjust as needed */
-  }
+    .content h1 {
+        font-size: 30px;
+    }
+
+    .content p {
+        font-size: 18px;
+    }
+
+    .get-started-button {
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+
+    .aboutus_container {
+        width: 90%;
+    }
 }
